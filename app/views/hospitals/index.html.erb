@@ -1,0 +1,10 @@
+<h1>List of Hospitals in the U.S.</h1>
+
+<%@hospitals.each do |hospital|%>
+  <strong><h3><p><%=hospital.name %><p></h3></strong>
+  <p>Address: 
+  <%=hospital.address %>, <%=hospital.city %>, <%=hospital.state%> <%=hospital.zip %><p>
+  <p>Number of Beds: <%=hospital.beds %><p>
+  <p>Trauma Status: <%=hospital.trauma %><p>
+  <hr>
+<%end%>
