@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
 
-  resources :hospitals, only: [:index]
   resources :users, except: [:new, :create] do 
-    resources :hospitals, except: [:index] 
+    resources :hospitals
   end
 
 
