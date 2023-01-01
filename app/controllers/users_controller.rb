@@ -15,8 +15,6 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       redirect_to register_path
-
-
     end
 
   end
