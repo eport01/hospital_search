@@ -28,6 +28,7 @@
 
 <%if @results%>
   <h2>Hospital Search Results</h2>
+  <h3><%=@results.count%> Results</h3>
   <%@results.each do |hospital|%>
     <strong><h3><p><%=hospital.name %><p></h3></strong>
     <p>Address: 
