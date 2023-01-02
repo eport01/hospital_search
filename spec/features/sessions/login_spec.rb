@@ -15,7 +15,16 @@ RSpec.describe 'log in' do
       click_button 'Submit'
 
       expect(current_path).to eq(user_path(@em))
+    end
+    it 'with wrong credentials, user sees error message and is taken back to login page' do 
+      visit login_path
+      fill_in :username, with: 'em'
+      fill_in :password, with: '123'
+      click_button 'Submit'
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content('Invalid email/password combination')
 
+      
     end
   end
 end
