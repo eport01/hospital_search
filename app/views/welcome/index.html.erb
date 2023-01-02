@@ -3,9 +3,36 @@
   <%=button_to "#{@current_user.username}'s Profile", user_path(@current_user), method: :get%>
 
   <%=button_to "List of All Hospitals", hospitals_path, method: :get%>
-    <%=button_to"Log Out", logout_path, method: :delete %>
+  <%=button_to"Log Out", logout_path, method: :delete %>
+  <div id= 'hospital_search'>
+  <%=form_with url: root_path, method: :get, local: true do |form|%>
+    <%=form.label :zip, "Search for Hospitals"%>
+    <%=form.text_field :zip %>
+    <%=form.submit "Submit" %>
+  <%end%>
+</div>  
+
+  <div id= 'city_search'>
+  <%=form_with url: root_path, method: :get, local: true do |form|%>
+    <%=form.label :city, "Search for Hospitals"%>
+    <%=form.text_field :city %>
+    <%=form.submit "Submit" %>
+  <%end%>
+</div>  
 
 <%else%>
   <%=button_to"Create New User", "/register", method: :get %>
   <%=button_to"Log In", login_path, method: :get %>
+<%end%>
+
+<%if @results%>
+  <h2>Hospital Search Results</h2>
+  <%@results.each do |hospital|%>
+    <strong><h3><p><%=hospital.name %><p></h3></strong>
+    <p>Address: 
+    <%=hospital.address %>, <%=hospital.city %>, <%=hospital.state%> <%=hospital.zip %><p>
+    <p>Number of Beds: <%=hospital.beds %><p>
+    <p>Trauma Status: <%=hospital.trauma %><p>
+  <%end%>
+
 <%end%>
