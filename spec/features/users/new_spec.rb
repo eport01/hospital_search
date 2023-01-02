@@ -13,7 +13,7 @@ RSpec.describe "user registration form" do
 
     click_on "Create User"
     user = User.last.id 
-    expect(current_path).to eq(user_path(user))
+    expect(current_path).to eq(root_path)
   end
 
   it 'if username or password is blank it takes uesr back to register path' do 
