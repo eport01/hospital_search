@@ -12,7 +12,7 @@ class HospitalFacade
   end
 
   def self.find_by_city(city, state)
-    HospitalService.city_search(city, state).map do |hospital|
+    HospitalService.city_search(city, state)[:data].map do |hospital|
       Hospital.new(hospital)
     end
   end
